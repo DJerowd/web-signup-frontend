@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
-import { isAxiosError } from "axios";
-import { ApiErrorResponse } from "../types";
-import api from "../api/axios";
+import { Link } from "react-router-dom";
+import { useAuthApi } from "../hooks/useAuthApi";
 
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -15,11 +12,7 @@ const Login: React.FC = () => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
-  const { login } = useAuth();
+  const { loginUser, loading, error } = useAuthApi();
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -31,29 +24,15 @@ const Login: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
-    try {
-      const { email, password } = formData;
-      const response = await api.post("/login", { email, password });
-      await login(response.data.data.accessToken);
-      navigate("/app/profile");
-    } catch (err) {
-      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
-        setError(err.response.data.message);
-      } else {
-        setError('Ocorreu um erro inesperado.');
-      }
-    } finally {
-      setLoading(false);
-    }
+    await loginUser(formData).catch(() => {});
   };
 
   return (
-    <div className="container">
+    <div className="layout">
       <div className="content">
         <main className="sign">
-          <h2 className="title">Login</h2>
+          <h2 className="title">Acesse sua conta</h2>
+
           <form className="sign-form" onSubmit={handleSubmit}>
             <Input
               label="Email"
@@ -65,6 +44,7 @@ const Login: React.FC = () => {
               autoFocus
               required
             />
+
             <Input
               label="Senha"
               id="password"
@@ -75,10 +55,12 @@ const Login: React.FC = () => {
               required
             />
             {error && <p className="error-message">{error}</p>}
+
             <Button type="submit" loading={loading}>
               Entrar
             </Button>
           </form>
+
           <p className="link">
             Não tem uma conta? <Link to="/register">Registre-se</Link>
           </p>

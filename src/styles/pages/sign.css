@@ -35,3 +35,39 @@
 .link :only-child:hover {
   filter: brightness(150%);
 }
+
+.layout {
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: load 0.5s ease-in-out;
+
+  width: 100vw;
+  min-height: 100vh;
+  padding: calc(var(--height-header) + 16px) 16px 16px 16px;
+  gap: var(--spacing-md);
+}
+
+@keyframes load {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

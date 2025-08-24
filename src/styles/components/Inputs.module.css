@@ -1,16 +1,11 @@
-.form-group {
+.formGroup {
   display: flex;
   flex-direction: column;
 
   width: 100%;
   gap: 0.5rem;
 }
-.input-group {
-  position: relative;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
+
 .label {
   font-weight: bold;
   color: var(--color-primary);

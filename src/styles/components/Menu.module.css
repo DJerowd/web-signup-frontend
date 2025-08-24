@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  z-index: 150;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+}
+
+.overlayOpen {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  z-index: 200;
+  transition: var(--transition-fast);
+
+  top: 0;
+  right: 0;
+  width: var(--width-menu);
+  max-width: 80vw;
+  height: 100%;
+  padding: var(--spacing-md);
+
+  background-color: var(--color-bg-2);
+  transform: translateX(100%);
+  border-left: var(--border-width) solid var(--color-border);
+}
+
+.menuOpen {
+  transform: translateX(0);
+}
+
+.navList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.link,
+.activeLink {
+  display: block;
+
+  padding: var(--spacing-md) var(--spacing-sm);
+  text-decoration: none;
+  font-size: var(--font-size-subtitle);
+
+  color: var(--color-text);
+}
+
+.activeLink {
+  font-weight: bold;
+  
+  color: var(--color-primary);
+}
+
+.logoutButton {
+  margin-top: auto;
+  composes: btn from "./Buttons.module.css";
+}

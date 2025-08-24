@@ -1,5 +1,7 @@
 import React from "react";
-import "../styles/components/Buttons.css";
+import LoadingSpinner from "../assets/LoadingSpinner";
+
+import styles from  "../styles/components/Buttons.module.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
@@ -7,8 +9,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: React.FC<ButtonProps> = ({ children, loading, ...props }) => {
   return (
-    <button className="btn" disabled={loading} {...props}>
-      {loading ? "Carregando..." : children}
+    <button className={styles.btn} disabled={loading} {...props}>
+      {loading ? <LoadingSpinner size="24px" /> : children}
     </button>
   );
 };

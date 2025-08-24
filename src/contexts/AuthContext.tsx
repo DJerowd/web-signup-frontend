@@ -1,10 +1,10 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import api from "../api/axios";
-import { User } from '../types';
+import { User } from "../types";
 
 interface AuthContextType {
   accessToken: string | null;
-   user: User | null;
+  user: User | null;
   login: (token: string) => Promise<void>;
   logout: () => void;
   isLoading: boolean;
@@ -16,7 +16,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [accessToken, setAccessToken] = useState<string | null>(
-    localStorage.getItem("accessToken")
+    localStorage.getItem("accessToken"),
   );
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);

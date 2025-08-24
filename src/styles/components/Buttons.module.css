@@ -23,25 +23,3 @@
   cursor: not-allowed;
   filter: brightness(50%);
 }
-
-.button {
-  width: 100%;
-  padding: 12px 15px;
-  border: none;
-  border-radius: 4px;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.2s ease-in-out;
-}
-
-.button:hover {
-  background-color: #0056b3;
-}
-
-.button:disabled {
-  background-color: #a0a0a0;
-  cursor: not-allowed;
-}

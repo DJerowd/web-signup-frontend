@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { isAxiosError } from "axios";
-import { ApiErrorResponse } from "../types";
-import api from "../api/axios";
+import { Link } from "react-router-dom";
+import { useAuthApi } from "../hooks/useAuthApi";
 
 import Input from "../components/Input";
 import Button from "../components/Button";
@@ -16,10 +14,8 @@ const Register: React.FC = () => {
     password: "",
     confirmPassword: "",
   });
-  const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-
-  const navigate = useNavigate();
+  const { registerUser, loading, error: apiError } = useAuthApi();
+  const [formError, setFormError] = useState<string | null>(null);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -31,40 +27,20 @@ const Register: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError(null);
+    setFormError(null);
     if (formData.password !== formData.confirmPassword) {
-      setError("As senhas não coincidem.");
-      setLoading(false);
+      setFormError("As senhas não coincidem.");
       return;
     }
-    try {
-      const { name, email, password } = formData;
-      await api.post("/register", { name, email, password });
-      alert(
-        "Registro realizado com sucesso! Você será redirecionado para o login."
-      );
-      navigate("/login");
-    } catch (err) {
-      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
-        const errorData = err.response.data;
-        if (errorData.errors) {
-          const firstErrorKey = Object.keys(errorData.errors)[0];
-          setError(errorData.errors[firstErrorKey]);
-        } else {
-          setError(errorData.message || "Erro ao registrar.");
-        }
-      }
-    } finally {
-      setLoading(false);
-    }
+    const { name, email, password } = formData;
+    await registerUser({ name, email, password }).catch(() => {});
   };
 
   return (
-    <div className="container">
+    <div className="layout">
       <div className="content">
         <main className="sign">
-          <h2 className="title">Criar Conta</h2>
+          <h2 className="title">Criar conta</h2>
           <form className="sign-form" onSubmit={handleSubmit}>
             <Input
               label="Nome Completo"
@@ -103,7 +79,9 @@ const Register: React.FC = () => {
               autoComplete="new-password"
               required
             />
-            {error && <p className="error-message">{error}</p>}
+            {(formError || apiError) && (
+              <p className="error-message">{formError || apiError}</p>
+            )}
             <Button type="submit" loading={loading}>
               Registrar
             </Button>

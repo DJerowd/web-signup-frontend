@@ -1,0 +1,47 @@
+.btn {
+  cursor: pointer;
+  font-weight: bold;
+  font-size: var(--font-size-base);
+  transition: var(--transition-fast);
+
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-radius: var(--border-radius);
+
+  appearance: none;
+  border: none;
+  color: var(--color-text);
+  background: var(--color-primary);
+}
+.btn:hover:not(:disabled) {
+  filter: brightness(150%);
+}
+.btn:active:not(:disabled) {
+  filter: brightness(120%);
+}
+.btn:disabled {
+  cursor: not-allowed;
+  filter: brightness(50%);
+}
+
+.button {
+  width: 100%;
+  padding: 12px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.button:hover {
+  background-color: #0056b3;
+}
+
+.button:disabled {
+  background-color: #a0a0a0;
+  cursor: not-allowed;
+}

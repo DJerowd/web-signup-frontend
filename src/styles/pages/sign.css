@@ -1,0 +1,37 @@
+.sign {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  font-size: var(--font-size-base);
+
+  width: 480px;
+  max-width: 100vw;
+  padding: var(--spacing-md);
+  gap: var(--spacing-md);
+  border-radius: var(--border-radius);
+
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--box-shadow);
+  color: var(--color-text);
+  background-color: var(--color-bg-2);
+}
+
+.sign-form {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  gap: var(--spacing-md);
+}
+
+.link {
+  text-align: center;
+}
+.link :only-child {
+  transition: var(--transition-fast);
+  text-decoration: none;
+  color: var(--color-primary);
+}
+.link :only-child:hover {
+  filter: brightness(150%);
+}

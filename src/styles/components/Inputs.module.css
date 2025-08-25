@@ -31,3 +31,35 @@
   box-shadow: 0 0 0 2px
     color-mix(in srgb, var(--color-primary) 30%, transparent);
 }
+
+.inputGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.passwordToggle {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  padding: 0;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 12px;
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.searchInput {
+  padding-left: 40px;
+}

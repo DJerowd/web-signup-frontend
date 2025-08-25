@@ -6,8 +6,7 @@ const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <p>
-        &copy; {new Date().getFullYear()} Seu Nome. Todos os direitos
-        reservados.
+        &copy; {new Date().getFullYear()} DJerowd. Todos os direitos reservados.
       </p>
     </footer>
   );

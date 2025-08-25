@@ -1,0 +1,73 @@
+.card {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: var(--transition-fast);
+
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius);
+
+  background-color: var(--color-bg-2);
+  border: var(--border-width) solid var(--color-border);
+  box-shadow: var(--box-shadow);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px
+    color-mix(in srgb, var(--shadow-color) 40%, transparent);
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-subtitle);
+  font-weight: bold;
+  flex-shrink: 0;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  width: 100%;
+  gap: var(--spacing-xs);
+}
+
+.name,
+.email {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+.name {
+  font-size: var(--font-size-subtitle);
+  color: var(--color-text);
+}
+.email {
+  color: var(--color-primary);
+}
+
+.role {
+  align-self: flex-start;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  padding: 2px var(--spacing-sm);
+  border-radius: var(--border-radius);
+
+  background-color: color-mix(in srgb, var(--color-primary) 20%, transparent);
+  color: var(--color-primary);
+}

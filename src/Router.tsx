@@ -5,8 +5,9 @@ import LoadingSpinner from "./assets/LoadingSpinner";
 import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Profile from "./pages/Profile";
 import Dashboard from "./pages/Dashboard";
+import Users from "./pages/Users";
+import UserProfile from "./pages/UserProfile";
 
 const ProtectedRoute = () => {
   const { accessToken, isLoading } = useAuth();
@@ -22,8 +23,9 @@ function Router() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/app" element={<ProtectedRoute />}>
-        <Route path="profile" element={<Profile />} />
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="users" element={<Users />} />
+        <Route path="users/:id" element={<UserProfile />} />
       </Route>
       <Route path="*" element={<Navigate to="/app/profile" />} />
     </Routes>

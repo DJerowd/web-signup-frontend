@@ -10,7 +10,7 @@ interface MenuProps {
 }
 
 const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
-  const { logout } = useAuth();
+  const { user, logout } = useAuth();
 
   const handleLogout = () => {
     onClose();
@@ -27,17 +27,6 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
         <ul className={styles.navList}>
           <li>
             <NavLink
-              to="/app/profile"
-              className={({ isActive }) =>
-                isActive ? styles.activeLink : styles.link
-              }
-              onClick={onClose}
-            >
-              Perfil
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
               to="/app/dashboard"
               className={({ isActive }) =>
                 isActive ? styles.activeLink : styles.link
@@ -47,6 +36,19 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
               Dashboard
             </NavLink>
           </li>
+          {user?.role === "admin" && (
+            <li>
+              <NavLink
+                to="/app/users"
+                className={({ isActive }) =>
+                  isActive ? styles.activeLink : styles.link
+                }
+                onClick={onClose}
+              >
+                Utilizadores
+              </NavLink>
+            </li>
+          )}
         </ul>
         <button className={styles.logoutButton} onClick={handleLogout}>
           Sair

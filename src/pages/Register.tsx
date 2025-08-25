@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthApi } from "../hooks/useAuthApi";
 
-import Input from "../components/Input";
+import Input from "../components/inputs/Input";
+import InputPassword from "../components/inputs/InputPassword";
 import Button from "../components/Button";
 
 import "../styles/pages/sign.css";
@@ -41,6 +42,7 @@ const Register: React.FC = () => {
       <div className="content">
         <main className="sign">
           <h2 className="title">Criar conta</h2>
+
           <form className="sign-form" onSubmit={handleSubmit}>
             <Input
               label="Nome Completo"
@@ -52,6 +54,7 @@ const Register: React.FC = () => {
               autoFocus
               required
             />
+
             <Input
               label="Email"
               id="email"
@@ -61,31 +64,34 @@ const Register: React.FC = () => {
               autoComplete="email"
               required
             />
-            <Input
+
+            <InputPassword
               label="Senha (mínimo 8 caracteres)"
               id="password"
-              type="password"
               value={formData.password}
               onChange={handleChange}
               autoComplete="new-password"
               required
             />
-            <Input
+
+            <InputPassword
               label="Confirmar Senha"
               id="confirmPassword"
-              type="password"
               value={formData.confirmPassword}
               onChange={handleChange}
               autoComplete="new-password"
               required
             />
+
             {(formError || apiError) && (
               <p className="error-message">{formError || apiError}</p>
             )}
+
             <Button type="submit" loading={loading}>
               Registrar
             </Button>
           </form>
+
           <p className="link">
             Já tem uma conta? <Link to="/login">Faça Login</Link>
           </p>

@@ -21,10 +21,10 @@ export default tseslint.config(
     plugins: {
       "react-hooks": reactHooks,
       "react-refresh": reactRefresh,
-      'react': react,
+      react: react,
     },
     settings: {
-      react: { version: '18.3.1' }
+      react: { version: "18.3.1" },
     },
     rules: {
       ...react.configs.recommended.rules,
@@ -34,5 +34,5 @@ export default tseslint.config(
         { allowConstantExport: true },
       ],
     },
-  }
+  },
 );

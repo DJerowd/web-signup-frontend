@@ -32,9 +32,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  
+
   padding: var(--spacing-sm);
-  
+
   background: none;
   border: none;
   color: var(--color-text);

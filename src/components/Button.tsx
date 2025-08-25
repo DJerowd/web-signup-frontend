@@ -1,7 +1,7 @@
 import React from "react";
 import LoadingSpinner from "../assets/LoadingSpinner";
 
-import styles from  "../styles/components/Buttons.module.css";
+import styles from "../styles/components/Buttons.module.css";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;

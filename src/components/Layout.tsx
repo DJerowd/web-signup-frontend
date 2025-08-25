@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
-import { Outlet } from 'react-router-dom';
-import Header from './Header';
-import Footer from './Footer';
-import Menu from './Menu';
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
+import Menu from "./Menu";
 
-import styles from '../styles/components/Layout.module.css';
+import styles from "../styles/components/Layout.module.css";
 
 const Layout: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

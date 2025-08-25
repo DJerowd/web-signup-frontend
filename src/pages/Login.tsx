@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useAuthApi } from "../hooks/useAuthApi";
 
-import Input from "../components/Input";
+import Input from "../components/inputs/Input";
+import InputPassword from "../components/inputs/InputPassword";
 import Button from "../components/Button";
 
 import "../styles/pages/sign.css";
@@ -45,10 +46,9 @@ const Login: React.FC = () => {
               required
             />
 
-            <Input
+            <InputPassword
               label="Senha"
               id="password"
-              type="password"
               value={formData.password}
               onChange={handleChange}
               autoComplete="current-password"

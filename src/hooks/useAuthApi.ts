@@ -50,7 +50,7 @@ export const useAuthApi = () => {
     try {
       const response = await api.post("/login", data);
       await login(response.data.data.accessToken);
-      navigate("/app/profile");
+      navigate("/app/dashboard");
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message);

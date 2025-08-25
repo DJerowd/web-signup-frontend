@@ -4,9 +4,9 @@ import { useAuthApi } from "../hooks/useAuthApi";
 
 import Input from "../components/inputs/Input";
 import InputPassword from "../components/inputs/InputPassword";
-import Button from "../components/Button";
+import Button from "../components/buttons/Button";
 
-import "../styles/pages/sign.css";
+import styles from "../styles/pages/Sign.module.css";
 
 const Register: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -38,12 +38,12 @@ const Register: React.FC = () => {
   };
 
   return (
-    <div className="layout">
-      <div className="content">
-        <main className="sign">
+    <div className={styles.layout}>
+      <div className={styles.content}>
+        <main className={styles.sign}>
           <h2 className="title">Criar conta</h2>
 
-          <form className="sign-form" onSubmit={handleSubmit}>
+          <form className={styles.signForm} onSubmit={handleSubmit}>
             <Input
               label="Nome Completo"
               id="name"
@@ -92,7 +92,7 @@ const Register: React.FC = () => {
             </Button>
           </form>
 
-          <p className="link">
+          <p className={styles.link}>
             Já tem uma conta? <Link to="/login">Faça Login</Link>
           </p>
         </main>

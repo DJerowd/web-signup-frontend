@@ -16,7 +16,7 @@
   background-color: var(--color-bg-2);
 }
 
-.sign-form {
+.signForm {
   display: flex;
   flex-direction: column;
 

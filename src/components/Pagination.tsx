@@ -1,5 +1,6 @@
 import React from "react";
-import Button from "./Button";
+
+import Button from "./buttons/Button";
 
 import styles from "../styles/components/Pagination.module.css";
 

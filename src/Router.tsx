@@ -27,7 +27,7 @@ function Router() {
         <Route path="users" element={<Users />} />
         <Route path="users/:id" element={<UserProfile />} />
       </Route>
-      <Route path="*" element={<Navigate to="/app/profile" />} />
+      <Route path="*" element={<Navigate to="/app/dashboard" />} />
     </Routes>
   );
 }

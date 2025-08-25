@@ -16,18 +16,10 @@ export const EyeIcon: React.FC<EyeIconProps> = ({ isOpen }) => (
     strokeLinecap="round"
     strokeLinejoin="round"
   >
-    {isOpen ? (
-      <>
-        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
-        <circle cx="12" cy="12" r="3" />
-      </>
-    ) : (
-      <>
-        <path d="M9.88 9.88a3 3 0 1 0 4.24 4.24" />
-        <path d="M10.73 5.08A10.43 10.43 0 0 1 12 5c7 0 10 7 10 7a10.78 10.78 0 0 1-2.02 3.5" />
-        <path d="M2 12s3-7 10-7a9.74 9.74 0 0 1 5 1.6" />
-        <line x1="2" x2="22" y1="2" y2="22" />
-      </>
-    )}
+    <>
+      <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+      <circle cx="12" cy="12" r="3" />
+    </>
+    {isOpen && <line x1="2" x2="22" y1="2" y2="22" />}
   </svg>
 );

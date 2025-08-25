@@ -4,9 +4,9 @@ import { useAuthApi } from "../hooks/useAuthApi";
 
 import Input from "../components/inputs/Input";
 import InputPassword from "../components/inputs/InputPassword";
-import Button from "../components/Button";
+import Button from "../components/buttons/Button";
 
-import "../styles/pages/sign.css";
+import styles from "../styles/pages/Sign.module.css";
 
 const Login: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -29,12 +29,12 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="layout">
-      <div className="content">
-        <main className="sign">
+    <div className={styles.layout}>
+      <div className={styles.content}>
+        <main className={styles.sign}>
           <h2 className="title">Acesse sua conta</h2>
 
-          <form className="sign-form" onSubmit={handleSubmit}>
+          <form className={styles.signForm} onSubmit={handleSubmit}>
             <Input
               label="Email"
               id="email"
@@ -61,7 +61,7 @@ const Login: React.FC = () => {
             </Button>
           </form>
 
-          <p className="link">
+          <p className={styles.link}>
             Não tem uma conta? <Link to="/register">Registre-se</Link>
           </p>
         </main>

@@ -49,6 +49,17 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
               </NavLink>
             </li>
           )}
+          <li>
+            <NavLink
+              to="/app/settings"
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.link
+              }
+              onClick={onClose}
+            >
+              Configurações
+            </NavLink>
+          </li>
         </ul>
         <button className={styles.logoutButton} onClick={handleLogout}>
           Sair

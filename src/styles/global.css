@@ -81,6 +81,15 @@ html.dark {
   --color-border: #444444;
   --color-footer: #242424;
 }
+html.high-contrast {
+  --color-primary: #00AA00;
+  --box-shadow: 0 0 8px transparent;
+}
+
+html.reduce-motion * {
+  transition: none !important;
+  animation: none !important;
+}
 
 body {
   display: flex;

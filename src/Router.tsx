@@ -8,6 +8,7 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
+import Settings from "./pages/Settings";
 
 const ProtectedRoute = () => {
   const { accessToken, isLoading } = useAuth();
@@ -26,6 +27,7 @@ function Router() {
         <Route path="dashboard" element={<Dashboard />} />
         <Route path="users" element={<Users />} />
         <Route path="users/:id" element={<UserProfile />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
       <Route path="*" element={<Navigate to="/app/dashboard" />} />
     </Routes>

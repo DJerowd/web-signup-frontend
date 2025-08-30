@@ -1,13 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAxiosError } from "axios";
+import { ApiErrorResponse, UserUpdateData } from "../types";
+import toast from "react-hot-toast";
 import api from "../api/axios";
-import { ApiErrorResponse } from "../types";
-
-interface UserUpdateData {
-  name?: string;
-  email?: string;
-}
 
 export const useUserActions = () => {
   const [loading, setLoading] = useState(false);
@@ -19,13 +15,14 @@ export const useUserActions = () => {
     setError(null);
     try {
       const response = await api.put(`/users/${id}`, data);
-      alert("Utilizador atualizado com sucesso!");
+      toast.success("Utilizador atualizado com sucesso!");
       return response.data.data.user;
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message || "Erro ao atualizar utilizador.");
+        toast.error("Ocorreu um erro inesperado.");
       } else {
-        setError("Ocorreu um erro inesperado.");
+        toast.error("Ocorreu um erro inesperado.");
       }
       throw err;
     } finally {
@@ -38,13 +35,14 @@ export const useUserActions = () => {
     setError(null);
     try {
       await api.delete(`/users/${id}`);
-      alert("Utilizador excluído com sucesso!");
+      toast.success("Utilizador excluído com sucesso!");
       navigate("/app/users");
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message || "Erro ao excluir utilizador.");
+        toast.error("Ocorreu um erro inesperado.");
       } else {
-        setError("Ocorreu um erro inesperado.");
+        toast.error("Ocorreu um erro inesperado.");
       }
       throw err;
     } finally {

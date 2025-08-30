@@ -1,17 +1,8 @@
 import { useState, useCallback } from "react";
 import { isAxiosError } from "axios";
+import { User, ApiErrorResponse, UsersApiResponse } from "../types";
+import toast from "react-hot-toast";
 import api from "../api/axios";
-import { User, ApiErrorResponse } from "../types";
-
-interface UsersApiResponse {
-  users: User[];
-  pagination: {
-    totalUsers: number;
-    totalPages: number;
-    currentPage: number;
-    limit: number;
-  };
-}
 
 export const useUsersApi = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -32,18 +23,17 @@ export const useUsersApi = () => {
       if (name) {
         params.append("name", name);
       }
-
       const response = await api.get<{ data: UsersApiResponse }>(
-        `/users?${params.toString()}`,
+        `/users?${params.toString()}`
       );
-
       setUsers(response.data.data.users);
       setPagination(response.data.data.pagination);
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message || "Erro ao buscar utilizadores.");
+        toast.error("Ocorreu um erro inesperado.");
       } else {
-        setError("Ocorreu um erro inesperado.");
+        toast.error("Ocorreu um erro inesperado.");
       }
       setUsers([]);
       setPagination(null);

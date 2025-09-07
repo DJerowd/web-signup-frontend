@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAxiosError } from "axios";
-import { ApiErrorResponse, UserUpdateData } from "../types";
+import { ApiErrorResponse, UserUpdateData, UpdatePasswordData } from "../types";
 import toast from "react-hot-toast";
 import api from "../api/axios";
 
@@ -20,6 +20,25 @@ export const useUserActions = () => {
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message || "Erro ao atualizar utilizador.");
+        toast.error("Ocorreu um erro inesperado.");
+      } else {
+        toast.error("Ocorreu um erro inesperado.");
+      }
+      throw err;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const updatePassword = async (data: UpdatePasswordData) => {
+    setLoading(true);
+    setError(null);
+    try {
+      await api.put("/users/update-password", data);
+      toast.success("Senha atualizada com sucesso!");
+    } catch (err) {
+      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
+        setError(err.response.data.message || "Erro ao atualizar a senha.");
         toast.error("Ocorreu um erro inesperado.");
       } else {
         toast.error("Ocorreu um erro inesperado.");
@@ -50,5 +69,5 @@ export const useUserActions = () => {
     }
   };
 
-  return { updateUser, deleteUser, loading, error, setError };
+  return { updateUser, updatePassword, deleteUser, loading, error, setError };
 };

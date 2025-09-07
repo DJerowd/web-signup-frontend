@@ -1,0 +1,11 @@
+.actionsContainer {
+  display: flex;
+  justify-content: end;
+  gap: var(--spacing-md);
+  padding: var(--spacing-lg);
+  width: 100%;
+  max-width: 600px;
+  background-color: var(--color-bg-2);
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}

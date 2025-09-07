@@ -1,5 +1,6 @@
 .header {
   display: flex;
+  justify-content: center;
   align-items: center;
   position: fixed;
   z-index: 100;
@@ -11,8 +12,8 @@
   height: var(--height-header);
   padding: 0 var(--spacing-md);
 
-  background-color: var(--color-bg-2);
-  border-bottom: var(--border-width) solid var(--color-border);
+  background-color: var(--color-header);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
 .content {
@@ -20,10 +21,14 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  max-width: 1400px;
 }
 
-.title {
-  font-size: var(--font-size-subtitle);
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  
   color: var(--color-primary);
 }
 
@@ -32,10 +37,15 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  transition: var(--transition-fast);
 
   padding: var(--spacing-sm);
+  border-radius: var(--border-radius);
 
   background: none;
   border: none;
   color: var(--color-text);
+}
+.menuButton:hover {
+  background-color: var(--color-border);
 }

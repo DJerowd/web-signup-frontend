@@ -6,14 +6,14 @@
   animation: load 0.5s ease-in-out;
 
   width: 100vw;
-  min-height: 100vh;
-
+  
   color: var(--color-text);
   background-color: var(--color-bg);
 }
 
 .content {
   flex-grow: 1;
+  min-height: 100vh;
   padding: calc(var(--height-header) + 16px) 16px 32px 16px;
 }
 

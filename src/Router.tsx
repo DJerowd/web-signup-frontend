@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
 import Users from "./pages/Users";
 import UserProfile from "./pages/UserProfile";
 import Settings from "./pages/Settings";
@@ -25,6 +26,7 @@ function Router() {
       <Route path="/register" element={<Register />} />
       <Route path="/app" element={<ProtectedRoute />}>
         <Route path="dashboard" element={<Dashboard />} />
+        <Route path="profile" element={<Profile />} />
         <Route path="users" element={<Users />} />
         <Route path="users/:id" element={<UserProfile />} />
         <Route path="settings" element={<Settings />} />

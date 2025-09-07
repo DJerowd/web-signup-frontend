@@ -7,6 +7,11 @@ export interface UsersApiResponse {
     limit: number;
   };
 }
+export interface UpdatePasswordData {
+  oldPassword?: string;
+  newPassword?: string;
+  confirmPassword?: string;
+}
 export interface UserUpdateData {
   name?: string;
   email?: string;

@@ -36,6 +36,17 @@ const Menu: React.FC<MenuProps> = ({ isOpen, onClose }) => {
               Dashboard
             </NavLink>
           </li>
+          <li>
+            <NavLink
+              to="/app/profile"
+              className={({ isActive }) =>
+                isActive ? styles.activeLink : styles.link
+              }
+              onClick={onClose}
+            >
+              Perfil
+            </NavLink>
+          </li>
           {user?.role === "admin" && (
             <li>
               <NavLink

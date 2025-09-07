@@ -18,10 +18,12 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Toaster
             position="bottom-left"
             toastOptions={{
+              duration: 6000,
               style: {
                 background: "var(--color-bg-2)",
                 color: "var(--color-text)",
                 border: "var(--border-width) solid var(--color-border)",
+                fontSize: "var(--font-size-base)",
               },
               success: {
                 iconTheme: {

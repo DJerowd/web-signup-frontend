@@ -89,3 +89,13 @@
 .backButton {
   max-width: 250px;
 }
+
+.cardHeaderSimple {
+  padding: var(--spacing-lg);
+  border-bottom: var(--border-width) solid var(--color-border);
+}
+
+.cardTitle {
+  font-size: var(--font-size-subtitle);
+  margin: 0;
+}

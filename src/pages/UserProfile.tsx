@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { User } from "../types";
 import { useAuth } from "../contexts/AuthContext";
 import { useUserActions } from "../hooks/useUserActions";
@@ -14,7 +14,6 @@ import styles from "../styles/pages/Profile.module.css";
 
 const UserProfile: React.FC = () => {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { user: loggedInUser } = useAuth();
   const {
     updateUser,
@@ -89,16 +88,13 @@ const UserProfile: React.FC = () => {
 
   return (
     <div className={styles.profilePage}>
-      <Button onClick={() => navigate("/app/users")}>
-        Voltar para a listagem
-      </Button>
       <div className={styles.profileCard}>
         <div className={styles.cardHeader}>
           <div className={styles.avatar}>
             <span>{user.name.charAt(0).toUpperCase()}</span>
           </div>
-          <h1 className={styles.userName}>{user.name}</h1>
           <span className={styles.userRole}>{user.role}</span>
+          <h1 className={styles.userName}>{user.name}</h1>
         </div>
 
         {!isEditing ? (
@@ -109,6 +105,10 @@ const UserProfile: React.FC = () => {
             <p>
               <strong>Membro desde:</strong>{" "}
               {new Date(user.createdAt).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>Ultima atualização:</strong>{" "}
+              {new Date(user.updatedAt).toLocaleDateString()}
             </p>
           </div>
         ) : (
